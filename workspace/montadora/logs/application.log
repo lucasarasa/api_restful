@@ -1,0 +1,45 @@
+2024-10-05T00:00:10.578-03:00  INFO 18784 --- [montadora] [http-nio-8000-exec-1] o.a.c.c.C.[.[localhost].[/montadora]     : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-10-05T00:00:10.584-03:00  INFO 18784 --- [montadora] [http-nio-8000-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-10-05T00:00:10.585-03:00 DEBUG 18784 --- [montadora] [http-nio-8000-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2024-10-05T00:00:10.585-03:00 DEBUG 18784 --- [montadora] [http-nio-8000-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2024-10-05T00:00:10.585-03:00 DEBUG 18784 --- [montadora] [http-nio-8000-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2024-10-05T00:00:10.587-03:00 DEBUG 18784 --- [montadora] [http-nio-8000-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@56ba7876
+2024-10-05T00:00:10.587-03:00 DEBUG 18784 --- [montadora] [http-nio-8000-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@3de93d1f
+2024-10-05T00:00:10.588-03:00 DEBUG 18784 --- [montadora] [http-nio-8000-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2024-10-05T00:00:10.589-03:00  INFO 18784 --- [montadora] [http-nio-8000-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2024-10-05T00:00:10.600-03:00 DEBUG 18784 --- [montadora] [http-nio-8000-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/montadora/swagger-ui/index.html", parameters={}
+2024-10-05T00:00:10.610-03:00 DEBUG 18784 --- [montadora] [http-nio-8000-exec-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2024-10-05T00:00:10.678-03:00 DEBUG 18784 --- [montadora] [http-nio-8000-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-10-05T00:00:10.707-03:00 DEBUG 18784 --- [montadora] [http-nio-8000-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/montadora/swagger-ui/swagger-ui.css", parameters={}
+2024-10-05T00:00:10.708-03:00 DEBUG 18784 --- [montadora] [http-nio-8000-exec-2] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2024-10-05T00:00:10.711-03:00 DEBUG 18784 --- [montadora] [http-nio-8000-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-10-05T00:00:10.725-03:00 DEBUG 18784 --- [montadora] [http-nio-8000-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/montadora/swagger-ui/index.css", parameters={}
+2024-10-05T00:00:10.726-03:00 DEBUG 18784 --- [montadora] [http-nio-8000-exec-3] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2024-10-05T00:00:10.728-03:00 DEBUG 18784 --- [montadora] [http-nio-8000-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-10-05T00:00:10.737-03:00 DEBUG 18784 --- [montadora] [http-nio-8000-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/montadora/swagger-ui/swagger-ui-bundle.js", parameters={}
+2024-10-05T00:00:10.738-03:00 DEBUG 18784 --- [montadora] [http-nio-8000-exec-4] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2024-10-05T00:00:10.740-03:00 DEBUG 18784 --- [montadora] [http-nio-8000-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-10-05T00:00:10.748-03:00 DEBUG 18784 --- [montadora] [http-nio-8000-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/montadora/swagger-ui/swagger-ui-standalone-preset.js", parameters={}
+2024-10-05T00:00:10.748-03:00 DEBUG 18784 --- [montadora] [http-nio-8000-exec-5] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2024-10-05T00:00:10.750-03:00 DEBUG 18784 --- [montadora] [http-nio-8000-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-10-05T00:00:10.757-03:00 DEBUG 18784 --- [montadora] [http-nio-8000-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/montadora/swagger-ui/swagger-initializer.js", parameters={}
+2024-10-05T00:00:10.758-03:00 DEBUG 18784 --- [montadora] [http-nio-8000-exec-6] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2024-10-05T00:00:10.799-03:00 DEBUG 18784 --- [montadora] [http-nio-8000-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-10-05T00:00:11.015-03:00 DEBUG 18784 --- [montadora] [http-nio-8000-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/montadora/swagger-ui/favicon-32x32.png", parameters={}
+2024-10-05T00:00:11.016-03:00 DEBUG 18784 --- [montadora] [http-nio-8000-exec-7] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2024-10-05T00:00:11.018-03:00 DEBUG 18784 --- [montadora] [http-nio-8000-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-10-05T00:00:11.058-03:00 DEBUG 18784 --- [montadora] [http-nio-8000-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/montadora/v3/api-docs/swagger-config", parameters={}
+2024-10-05T00:00:11.060-03:00 DEBUG 18784 --- [montadora] [http-nio-8000-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springdoc.webmvc.ui.SwaggerConfigResource#openapiJson(HttpServletRequest)
+2024-10-05T00:00:11.081-03:00 DEBUG 18784 --- [montadora] [http-nio-8000-exec-8] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [*/*] and supported [application/json]
+2024-10-05T00:00:11.083-03:00 DEBUG 18784 --- [montadora] [http-nio-8000-exec-8] m.m.a.RequestResponseBodyMethodProcessor : Writing [{configUrl=/montadora/v3/api-docs/swagger-config, oauth2RedirectUrl=http://localhost:8000/montadora/ (truncated)...]
+2024-10-05T00:00:11.088-03:00 DEBUG 18784 --- [montadora] [http-nio-8000-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-10-05T00:00:11.102-03:00 DEBUG 18784 --- [montadora] [http-nio-8000-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/montadora/v3/api-docs", parameters={}
+2024-10-05T00:00:11.103-03:00 DEBUG 18784 --- [montadora] [http-nio-8000-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springdoc.webmvc.api.OpenApiWebMvcResource#openapiJson(HttpServletRequest, String, Locale)
+2024-10-05T00:00:11.303-03:00  INFO 18784 --- [montadora] [http-nio-8000-exec-9] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 187 ms
+2024-10-05T00:00:11.323-03:00 DEBUG 18784 --- [montadora] [http-nio-8000-exec-9] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [application/json, */*] and supported [application/json]
+2024-10-05T00:00:11.324-03:00 DEBUG 18784 --- [montadora] [http-nio-8000-exec-9] m.m.a.RequestResponseBodyMethodProcessor : Writing [{123, 34, 111, 112, 101, 110, 97, 112, 105, 34, 58, 34, 51, 46, 48, 46, 49, 34, 44, 34, 105, 110, 10 (truncated)...]
+2024-10-05T00:00:11.324-03:00 DEBUG 18784 --- [montadora] [http-nio-8000-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-10-05T00:00:22.834-03:00  INFO 18784 --- [montadora] [RMI TCP Connection(4)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2024-10-05T00:00:22.890-03:00  INFO 18784 --- [montadora] [RMI TCP Connection(4)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-10-05T00:00:22.894-03:00  INFO 18784 --- [montadora] [RMI TCP Connection(4)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-10-05T00:00:22.897-03:00  INFO 18784 --- [montadora] [RMI TCP Connection(4)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
