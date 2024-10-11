@@ -13,16 +13,16 @@ public class Carro {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "cur_cd_id")
+	@Column(name = "car_cd_id")
 	private Integer id;
 
-	@Column(name = "cur_tx_marca")
+	@Column(name = "car_tx_marca")
 	private String marca;
 
-	@Column(name = "cur_tx_modelo")
+	@Column(name = "car_tx_modelo")
 	private String modelo;
 
-	@Column(name = "cur_int_ano")
+	@Column(name = "car_int_ano")
 	private Long ano;
 
 	public Carro() {
