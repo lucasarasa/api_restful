@@ -1,5 +1,6 @@
 package br.com.example.montadora.services;
 
+import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Properties;
@@ -86,4 +87,37 @@ public class EmailService {
 			return "Erro ao enviar o email" + e.getMessage();
 		}
 	}
+	
+	public void mailSend() {
+		LocalDateTime localDateTime = LocalDateTime.now();
+		DateTimeFormatter dateForm = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		DecimalFormat dec = new DecimalFormat("R$ #,##0.00");
+		MimeMessage message = javaMailSender.createMimeMessage();
+		try {
+			MimeMessageHelper helper = new MimeMessageHelper(message, true);
+			helper.setSubject("Assunto");
+			helper.setTo("diogoportelladantas1234@gmail.com");
+			
+			StringBuilder sBuilder = new StringBuilder();
+			sBuilder.append("<html>\r\n");
+			sBuilder.append("	<body>\r\n");
+			sBuilder.append("		<div>"+ localDateTime.format(dateForm) +"</div>");
+			sBuilder.append("		<div align=\"center\">\r\n");
+			sBuilder.append("			<p>Aula</p>\r\n");
+			sBuilder.append("		</div>\r\n");
+			sBuilder.append("		<br>\r\n");
+			sBuilder.append("		<table border='2' cellpadding = '2'>\r\n");
+			sBuilder.append("			<tr><th>Nome</th><th>Preço</th></tr>\r\n");
+			sBuilder.append("			<tr><td>Esponja</td><td>" + dec.format(5) + "</td></tr>\r\n");
+			sBuilder.append("		</table>\r\n");
+			sBuilder.append("	</body>\r\n");
+			sBuilder.append("</html>");
+			
+			helper.setText(sBuilder.toString(), true);
+			javaMailSender.send(message);
+		} catch (MessagingException e) {
+			System.out.println("Erro ao enviar email" + e.getMessage());
+		}
+	}
+	
 }

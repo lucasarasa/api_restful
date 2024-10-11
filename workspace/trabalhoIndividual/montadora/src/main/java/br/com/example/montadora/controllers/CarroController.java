@@ -25,4 +25,10 @@ public class CarroController {
 		emailService.writerTeste2();
 		return "Email enviado com sucesso!";
 	}
+	
+	@GetMapping("/emailtres")
+	public String olaMundo3() {
+		emailService.mailSend();
+		return "Email enviado com sucesso!";
+	}
 }
