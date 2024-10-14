@@ -30,14 +30,12 @@ import br.com.example.montadora.security.repositories.RoleRepository;
 import br.com.example.montadora.security.repositories.UserRepository;
 import br.com.example.montadora.security.services.UserDetailsImpl;
 
-//permite solicitações de recursos de origens diferentes, mecanimos de segurança que impoe restrições 
-//permite que você controle quais origens podem acessar o end point
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
 	@Autowired
-	AuthenticationManager authenticationManager; //pertence ao spring docs e é uma interface que gerencia a autenticação de usuários
+	AuthenticationManager authenticationManager;
 
 	@Autowired
 	UserRepository userRepository;
@@ -46,20 +44,17 @@ public class AuthController {
 	RoleRepository roleRepository;
 
 	@Autowired
-	PasswordEncoder encoder; //responsável por criptografar a senha, e comparar com uma senha armazenada usando o a sha-1 (algoritimo de dispersão seguro/secure hash) ou maior
+	PasswordEncoder encoder;
 
 	@Autowired
-	JwtUtils jwtUtils; //usado para gerar o token
+	JwtUtils jwtUtils;
 
-	//faz o login de um usuario cadastrado préviamente no banco de dados
 	@PostMapping("/signin")
 	public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequestDTO loginRequest) {
 
-		//faz a autenticação
 		Authentication authentication = authenticationManager.authenticate(
 				new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
 
-		//fornece acesso ao contexto de segurança atual, permite recuperar informações
 		SecurityContextHolder.getContext().setAuthentication(authentication);
 		String jwt = jwtUtils.generateJwtToken(authentication);
 
@@ -71,7 +66,6 @@ public class AuthController {
 				new JwtResponseDTO(jwt, userDetails.getId(), userDetails.getUsername(), userDetails.getEmail(), roles));
 	}
 
-	//faz o cadastro de um novo usuário
 	@PostMapping("/signup")
 	public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequestDTO signUpRequest) {
 		if (userRepository.existsByUsername(signUpRequest.getUsername())) {
@@ -82,7 +76,6 @@ public class AuthController {
 			return ResponseEntity.badRequest().body(new MessageResponseDTO("Erro: Email já utilizado!"));
 		}
 
-		// Cria a nova conta de usuario
 		User user = new User(signUpRequest.getUsername(), signUpRequest.getEmail(),
 				encoder.encode(signUpRequest.getPassword()));
 
