@@ -1,4 +1,4 @@
-package br.com.example.calculadora.configs;
+package br.com.example.veiculo.configs;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Value;
@@ -35,9 +35,9 @@ public class SwaggerConfig {
 		license.setUrl("https://www.apache.org/licenses/LICENSE-2.0.html");
 		
 		Info info = new Info();
-		info.setTitle("Veiculo em API");
+		info.setTitle("Calculadora em API");
 		info.setVersion("1.0.0");
-		info.setDescription("API to manage veiculo");
+		info.setDescription("API to manage calculadora");
 		info.setContact(contact);
 		info.setLicense(license);
 		info.setTermsOfService("https://swagger.io/terms/");

@@ -1,4 +1,4 @@
-package br.com.example.montadora.entities;
+package br.com.example.veiculo.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -8,8 +8,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "carro")
-public class Carro {
+@Table(name = "veiculo")
+public class Veiculo {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,17 +22,22 @@ public class Carro {
 	@Column(name = "car_tx_modelo")
 	private String modelo;
 
-	@Column(name = "car_int_ano")
-	private Long ano;
-
-	public Carro() {
+	public Veiculo() {
 	}
 
-	public Carro(Integer id, String marca, String modelo, Long ano) {
+	public Veiculo(Integer id, String marca, String modelo) {
+		super();
 		this.id = id;
 		this.marca = marca;
 		this.modelo = modelo;
-		this.ano = ano;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getMarca() {
@@ -51,21 +56,9 @@ public class Carro {
 		this.modelo = modelo;
 	}
 
-	public Long getAno() {
-		return ano;
-	}
-
-	public void setAno(Long ano) {
-		this.ano = ano;
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
 	@Override
 	public String toString() {
-		return "Carro [id=" + id + ", marca=" + marca + ", modelo=" + modelo + ", ano=" + ano + "]";
+		return "Veiculo [id=" + id + ", marca=" + marca + ", modelo=" + modelo + "]";
 	}
 
 }
