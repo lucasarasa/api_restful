@@ -1,11 +1,11 @@
-package br.com.example.montadora.controllers;
+package br.com.example.montadora.security.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.example.montadora.services.EmailService;
+import br.com.example.montadora.security.services.EmailService;
 
 @RestController
 @RequestMapping("/carro")

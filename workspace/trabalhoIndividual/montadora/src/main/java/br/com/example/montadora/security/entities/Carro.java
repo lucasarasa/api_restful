@@ -1,4 +1,4 @@
-package br.com.example.montadora.entities;
+package br.com.example.montadora.security.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

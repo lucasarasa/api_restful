@@ -1,4 +1,4 @@
-package br.com.example.montadora.entities;
+package br.com.example.montadora.security.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -58,7 +58,7 @@ public class Endereco {
 	private String siafi;
 	
 	@OneToOne
-	@JoinColumn(name = "fk_concessionaria")
+	@JoinColumn(unique=true, name = "fk_concessionaria")
 	private Concessionaria concessionaria;
 
 	public Endereco() {
