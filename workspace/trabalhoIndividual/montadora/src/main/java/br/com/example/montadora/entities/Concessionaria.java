@@ -1,12 +1,13 @@
 package br.com.example.montadora.entities;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -27,19 +28,27 @@ public class Concessionaria {
 	@Column(name = "con_int_numero")
 	private int numero;
 
-	@ManyToOne
-	@JoinColumn(name = "con_fk_carro")
-	private Carro fkCarro;
+	@OneToMany(mappedBy = "fkConcessionaria")
+	@Column(name = "con_fk_carro")
+	private List<Carro> fkCarro;
 
 	public Concessionaria() {
 	}
 
-	public Concessionaria(Integer id, String nome, String endereco, int numero, Carro fkCarro) {
+	public Concessionaria(Integer id, String nome, String endereco, int numero, List<Carro> fkCarro) {
 		this.id = id;
 		this.nome = nome;
 		this.endereco = endereco;
 		this.numero = numero;
 		this.fkCarro = fkCarro;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getNome() {
@@ -66,15 +75,11 @@ public class Concessionaria {
 		this.numero = numero;
 	}
 
-	public Integer getId() {
-		return id;
-	}
-
-	public Carro getFkCarro() {
+	public List<Carro> getFkCarro() {
 		return fkCarro;
 	}
 
-	public void setFkCarro(Carro fkCarro) {
+	public void setFkCarro(List<Carro> fkCarro) {
 		this.fkCarro = fkCarro;
 	}
 

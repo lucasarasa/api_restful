@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -25,14 +27,27 @@ public class Carro {
 	@Column(name = "car_int_ano")
 	private Long ano;
 
+	@ManyToOne
+	@JoinColumn(name = "fk_concessionaria")
+	private Concessionaria fkConcessionaria;
+
 	public Carro() {
 	}
 
-	public Carro(Integer id, String marca, String modelo, Long ano) {
+	public Carro(Integer id, String marca, String modelo, Long ano, Concessionaria fkConcessionaria) {
 		this.id = id;
 		this.marca = marca;
 		this.modelo = modelo;
 		this.ano = ano;
+		this.fkConcessionaria = fkConcessionaria;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getMarca() {
@@ -59,13 +74,18 @@ public class Carro {
 		this.ano = ano;
 	}
 
-	public Integer getId() {
-		return id;
+	public Concessionaria getFkConcessionaria() {
+		return fkConcessionaria;
+	}
+
+	public void setFkConcessionaria(Concessionaria fkConcessionaria) {
+		this.fkConcessionaria = fkConcessionaria;
 	}
 
 	@Override
 	public String toString() {
-		return "Carro [id=" + id + ", marca=" + marca + ", modelo=" + modelo + ", ano=" + ano + "]";
+		return "Carro [id=" + id + ", marca=" + marca + ", modelo=" + modelo + ", ano=" + ano + ", fkConcessionaria="
+				+ fkConcessionaria + "]";
 	}
 
 }
