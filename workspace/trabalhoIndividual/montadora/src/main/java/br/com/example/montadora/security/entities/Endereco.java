@@ -27,6 +27,9 @@ public class Endereco {
 	@Column(name = "end_tx_complemento")
 	private String complemento;
 
+	@Column(name = "end_tx_numero")
+	private int numero;
+
 	@Column(name = "end_tx_unidade")
 	private String unidade;
 
@@ -56,22 +59,40 @@ public class Endereco {
 
 	@Column(name = "end_tx_siafi")
 	private String siafi;
-	
+
 	@OneToOne
-	@JoinColumn(unique=true, name = "fk_concessionaria")
-	private Concessionaria concessionaria;
+	@JoinColumn(unique = true, name = "fk_concessionaria")
+	private Concessionaria fkConcessionaria;
 
 	public Endereco() {
 	}
 
-	public Endereco(Integer id, String cep, String logradouro, String complemento, String unidade, String bairro,
-			String localidade, String uf, String estado, String regiao, String ibge, String gia, String ddd,
-			String siafi) {
-		super();
+	public Endereco(Integer id, String cep, String logradouro, String complemento, int numero, String unidade,
+			String bairro, String localidade, String uf, String estado, String regiao, String ibge, String gia,
+			String ddd, String siafi) {
 		this.id = id;
 		this.cep = cep;
 		this.logradouro = logradouro;
 		this.complemento = complemento;
+		this.numero = numero;
+		this.unidade = unidade;
+		this.bairro = bairro;
+		this.localidade = localidade;
+		this.uf = uf;
+		this.estado = estado;
+		this.regiao = regiao;
+		this.ibge = ibge;
+		this.gia = gia;
+		this.ddd = ddd;
+		this.siafi = siafi;
+	}
+
+	public Endereco(int numero, String bairro, String cep, String complemento, String ddd, String estado, String gia,
+			String ibge, String localidade, String logradouro, String regiao, String siafi, String uf, String unidade) {
+		this.cep = cep;
+		this.logradouro = logradouro;
+		this.complemento = complemento;
+		this.numero = numero;
 		this.unidade = unidade;
 		this.bairro = bairro;
 		this.localidade = localidade;
@@ -114,6 +135,14 @@ public class Endereco {
 
 	public void setComplemento(String complemento) {
 		this.complemento = complemento;
+	}
+
+	public int getNumero() {
+		return numero;
+	}
+
+	public void setNumero(int numero) {
+		this.numero = numero;
 	}
 
 	public String getUnidade() {
@@ -196,12 +225,20 @@ public class Endereco {
 		this.siafi = siafi;
 	}
 
+	public Concessionaria getFkConcessionaria() {
+		return fkConcessionaria;
+	}
+
+	public void setFkConcessionaria(Concessionaria fkConcessionaria) {
+		this.fkConcessionaria = fkConcessionaria;
+	}
+
 	@Override
 	public String toString() {
 		return "Endereco [id=" + id + ", cep=" + cep + ", logradouro=" + logradouro + ", complemento=" + complemento
-				+ ", unidade=" + unidade + ", bairro=" + bairro + ", localidade=" + localidade + ", uf=" + uf
-				+ ", estado=" + estado + ", regiao=" + regiao + ", ibge=" + ibge + ", gia=" + gia + ", ddd=" + ddd
-				+ ", siafi=" + siafi + "]";
+				+ ", numero=" + numero + ", unidade=" + unidade + ", bairro=" + bairro + ", localidade=" + localidade
+				+ ", uf=" + uf + ", estado=" + estado + ", regiao=" + regiao + ", ibge=" + ibge + ", gia=" + gia
+				+ ", ddd=" + ddd + ", siafi=" + siafi + ", concessionaria=" + fkConcessionaria + "]";
 	}
 
 }

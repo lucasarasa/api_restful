@@ -8,6 +8,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -32,15 +33,25 @@ public class Concessionaria {
 	@Column(name = "con_fk_carro")
 	private List<Carro> fkCarro;
 
+	@OneToMany(mappedBy = "fkConcessionaria")
+	@Column(name = "con_fk_user")
+	private List<User> fkuser;
+
+	@OneToOne(mappedBy = "fkConcessionaria")
+	private Endereco fkEndereco;
+
 	public Concessionaria() {
 	}
 
-	public Concessionaria(Integer id, String nome, String endereco, int numero, List<Carro> fkCarro) {
+	public Concessionaria(Integer id, String nome, String endereco, int numero, List<Carro> fkCarro, List<User> fkuser,
+			Endereco fkEndereco) {
 		this.id = id;
 		this.nome = nome;
 		this.endereco = endereco;
 		this.numero = numero;
 		this.fkCarro = fkCarro;
+		this.fkuser = fkuser;
+		this.fkEndereco = fkEndereco;
 	}
 
 	public Integer getId() {
@@ -83,10 +94,26 @@ public class Concessionaria {
 		this.fkCarro = fkCarro;
 	}
 
+	public List<User> getFkuser() {
+		return fkuser;
+	}
+
+	public void setFkuser(List<User> fkuser) {
+		this.fkuser = fkuser;
+	}
+
+	public Endereco getFkEndereco() {
+		return fkEndereco;
+	}
+
+	public void setFkEndereco(Endereco fkEndereco) {
+		this.fkEndereco = fkEndereco;
+	}
+
 	@Override
 	public String toString() {
 		return "Concessionaria [id=" + id + ", nome=" + nome + ", endereco=" + endereco + ", numero=" + numero
-				+ ", fkCarro=" + fkCarro + "]";
+				+ ", fkCarro=" + fkCarro + ", fkuser=" + fkuser + ", fkEndereco=" + fkEndereco + "]";
 	}
 
 }

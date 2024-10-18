@@ -41,6 +41,12 @@ public class Carro {
 		this.ano = ano;
 		this.fkConcessionaria = fkConcessionaria;
 	}
+	
+	public Carro(String marca, String modelo, Long ano) {
+		this.marca = marca;
+		this.modelo = modelo;
+		this.ano = ano;
+	}
 
 	public Integer getId() {
 		return id;
