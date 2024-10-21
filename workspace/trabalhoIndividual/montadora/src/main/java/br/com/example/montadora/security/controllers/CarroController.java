@@ -1,23 +1,21 @@
 package br.com.example.montadora.security.controllers;
 
 import java.util.List;
-
-//import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-//import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import br.com.example.montadora.security.dto.CarroResponseDTO;
+import br.com.example.montadora.security.dto.MessageResponseDTO;
 import br.com.example.montadora.security.entities.Carro;
 import br.com.example.montadora.security.services.CarroServices;
-//import br.com.example.montadora.security.services.EmailService;
 import br.com.example.montadora.utils.Util;
 
 @RestController
@@ -30,17 +28,25 @@ public class CarroController {
 	@Autowired
 	CarroServices carroServices;
 	
-//	@Autowired
-//	EmailService emailService;
-	
-	@PutMapping
-	public List<Carro> listarCarros() {
+	@GetMapping("/listarCarros")
+	public List<Carro> listarCarros(){
 		return carroServices.listarCarros();
 	}
 	
-	@PostMapping("/adicionarCarro")
-	public CarroResponseDTO adicionarCarro(@RequestBody CarroResponseDTO carroResponseDTO) {
-		return carroServices.adicionarCarro(carroResponseDTO);
+	@PostMapping("/cadastrarCarro")
+	public ResponseEntity<?> cadastrarCarro(@RequestBody CarroResponseDTO carro) {
+		carroServices.cadastrarCarro(carro);
+		return ResponseEntity.ok(new MessageResponseDTO("Carro cadastrado com sucesso"));
+	}
+	
+	@DeleteMapping("/{id}")
+	public ResponseEntity<String> deletarCarro(@PathVariable Integer id){
+		boolean resultDelete = carroServices.deletarCarro(id);
+		if(resultDelete) {
+			return ResponseEntity.status(HttpStatus.OK).body("Carro deletado com sucesso!");
+		} else {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Err: Falha ao deletar o objeto.");
+		}
 	}
 	
 	@GetMapping("/{id}")
@@ -48,26 +54,9 @@ public class CarroController {
 		return carroServices.buscarPorId(id);
 	}
 	
-	@DeleteMapping("/{id}")
-	public void deletarCarro(@PathVariable Integer id) {
-		carroServices.deletarPorId(id);
-	}
-	
-//	@GetMapping
-//	public String olaMundo() {
-//		emailService.writerTeste();
-//		return "Email enviado com sucesso!";
-//	}
-//	
-//	@GetMapping("/emaildois")
-//	public String olaMundo2() {
-//		emailService.writerTeste2();
-//		return "Email enviado com sucesso!";
-//	}
-//	
-//	@GetMapping("/emailtres")
-//	public String olaMundo3() {
-//		emailService.mailSend();
-//		return "Email enviado com sucesso!";
-//	}
+	@PutMapping("/atualizarCarro{id}")
+	public ResponseEntity<Carro> atualizarCarro(@PathVariable Integer id, @RequestBody CarroResponseDTO carroResponseDTO){
+		Carro carroAtt = carroServices.atualizarCarro(id, carroResponseDTO);
+		return ResponseEntity.ok(carroAtt);
+	}	
 }

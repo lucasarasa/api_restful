@@ -5,9 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "endereco")
@@ -60,10 +59,9 @@ public class Endereco {
 	@Column(name = "end_tx_siafi")
 	private String siafi;
 
-	@OneToOne
-	@JoinColumn(unique = true, name = "fk_concessionaria")
+	@OneToOne(mappedBy = "fkEndereco")
 	private Concessionaria fkConcessionaria;
-
+	
 	public Endereco() {
 	}
 

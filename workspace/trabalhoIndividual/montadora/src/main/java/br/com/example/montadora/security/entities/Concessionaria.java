@@ -7,6 +7,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -23,11 +24,11 @@ public class Concessionaria {
 	@Column(name = "con_tx_nome")
 	private String nome;
 
-	@Column(name = "con_tx_endereco")
-	private String endereco;
+	@Column(name = "con_tx_telefone")
+	private String telefone;
 
-	@Column(name = "con_int_numero")
-	private int numero;
+	@Column(name = "con_tx_email")
+	private String email;
 
 	@OneToMany(mappedBy = "fkConcessionaria")
 	@Column(name = "con_fk_carro")
@@ -37,18 +38,19 @@ public class Concessionaria {
 	@Column(name = "con_fk_user")
 	private List<User> fkuser;
 
-	@OneToOne(mappedBy = "fkConcessionaria")
+	@OneToOne
+	@JoinColumn(unique = true, name = "fk_endereco")
 	private Endereco fkEndereco;
 
 	public Concessionaria() {
 	}
 
-	public Concessionaria(Integer id, String nome, String endereco, int numero, List<Carro> fkCarro, List<User> fkuser,
-			Endereco fkEndereco) {
+	public Concessionaria(Integer id, String nome, String telefone, String email, List<Carro> fkCarro,
+			List<User> fkuser, Endereco fkEndereco) {
 		this.id = id;
 		this.nome = nome;
-		this.endereco = endereco;
-		this.numero = numero;
+		this.telefone = telefone;
+		this.email = email;
 		this.fkCarro = fkCarro;
 		this.fkuser = fkuser;
 		this.fkEndereco = fkEndereco;
@@ -70,20 +72,20 @@ public class Concessionaria {
 		this.nome = nome;
 	}
 
-	public String getEndereco() {
-		return endereco;
+	public String getTelefone() {
+		return telefone;
 	}
 
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
 	}
 
-	public int getNumero() {
-		return numero;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setNumero(int numero) {
-		this.numero = numero;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public List<Carro> getFkCarro() {
@@ -112,7 +114,7 @@ public class Concessionaria {
 
 	@Override
 	public String toString() {
-		return "Concessionaria [id=" + id + ", nome=" + nome + ", endereco=" + endereco + ", numero=" + numero
+		return "Concessionaria [id=" + id + ", nome=" + nome + ", telefone=" + telefone + ", email=" + email
 				+ ", fkCarro=" + fkCarro + ", fkuser=" + fkuser + ", fkEndereco=" + fkEndereco + "]";
 	}
 

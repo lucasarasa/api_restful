@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import br.com.example.montadora.security.entities.User;
 
-@Repository("user")
+@Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
 	Optional<User> findByUsername(String username);
 

@@ -53,9 +53,9 @@ public class EmailService {
 		DateTimeFormatter dateForm = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		
 		SimpleMailMessage message = new SimpleMailMessage();
-		message.setTo("diogoportelladantas1234@gmail.com");
-		message.setSubject("teste api");
-		message.setText("mensagem do email" + localDateTime.format(dateForm));
+		message.setTo("emailcomprador@gmail.com");
+		message.setSubject("Compra Automóvel");
+		message.setText("Parabéns! Compra realizada com sucesso." + localDateTime.format(dateForm));
 		
 		try {
 			javaMailSender.send(message);
@@ -73,11 +73,11 @@ public class EmailService {
 		
 		try {
 			MimeMessageHelper helper = new MimeMessageHelper(message, true);
-			helper.setSubject("Assunto do e-mail");
-			helper.setTo("diogoportelladantas1234@gmail.com");
+			helper.setSubject("Compra Automóvel");
+			helper.setTo("emailcomprador@gmail.com");
 			
 			String emailText = "<h1>Olá</h1>"
-								+"<p>Diogo é um pato</p>"
+								+"<p>paragrafo</p>"
 								+ "<p>Email enviado dia: " + localDateTime.format(dateForm) + "</p>"
 										+ "<br>";
 			helper.setText(emailText, true);
@@ -91,25 +91,29 @@ public class EmailService {
 	public void mailSend() {
 		LocalDateTime localDateTime = LocalDateTime.now();
 		DateTimeFormatter dateForm = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-		DecimalFormat dec = new DecimalFormat("R$ #,##0.00");
+//		DecimalFormat dec = new DecimalFormat("R$ #,##0.00");
 		MimeMessage message = javaMailSender.createMimeMessage();
 		try {
 			MimeMessageHelper helper = new MimeMessageHelper(message, true);
-			helper.setSubject("Assunto");
-			helper.setTo("diogoportelladantas1234@gmail.com");
+			helper.setSubject("Parabéns pela sua nova conquista!");
+			helper.setTo("emailcomprador@gmail.com");
 			
 			StringBuilder sBuilder = new StringBuilder();
 			sBuilder.append("<html>\r\n");
 			sBuilder.append("	<body>\r\n");
 			sBuilder.append("		<div>"+ localDateTime.format(dateForm) +"</div>");
 			sBuilder.append("		<div align=\"center\">\r\n");
-			sBuilder.append("			<p>Aula</p>\r\n");
+			sBuilder.append("			<h3>Olá, [Cliente]!</h3>\r\n");
+			sBuilder.append("			<p>Estamos muito felizes em saber que você escolheu o seu novo carro conosco!</p>\r\n");
+			sBuilder.append("			<p>Agradecemos pela confiança em nossa equipe e estamos aqui para garantir que sua experiência <br> "
+					+ "continue sendo excepcional. Se precisar de qualquer assistência, seja sobre o funcionamento do veículo ou serviços <br>"
+					+ " adicionais, não hesite em nos contatar.</p>\r\n");
+			sBuilder.append("			<p>Desejamos muitas aventuras e momentos incríveis ao volante do seu novo carro!</p>\r\n");
+			sBuilder.append("			<p>Atenciosamente,</p>\r\n");
+			sBuilder.append("		<br>\r\n");
+			sBuilder.append("			<p>Montadora Automóveis</p>\r\n");
 			sBuilder.append("		</div>\r\n");
 			sBuilder.append("		<br>\r\n");
-			sBuilder.append("		<table border='2' cellpadding = '2'>\r\n");
-			sBuilder.append("			<tr><th>Nome</th><th>Preço</th></tr>\r\n");
-			sBuilder.append("			<tr><td>Esponja</td><td>" + dec.format(5) + "</td></tr>\r\n");
-			sBuilder.append("		</table>\r\n");
 			sBuilder.append("	</body>\r\n");
 			sBuilder.append("</html>");
 			
