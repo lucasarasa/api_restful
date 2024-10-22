@@ -18335,3 +18335,36 @@ Caused by: java.lang.Error: Unresolved compilation problem:
 2024-10-22T16:31:57.427-03:00  INFO 17972 --- [montadora] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8000 (http) with context path '/montadora'
 2024-10-22T16:31:57.433-03:00  INFO 17972 --- [montadora] [restartedMain] b.c.e.montadora.MontadoraApplication     : Started MontadoraApplication in 1.89 seconds (process running for 13297.017)
 2024-10-22T16:31:57.435-03:00  INFO 17972 --- [montadora] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-10-22T16:32:54.193-03:00  INFO 17972 --- [montadora] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 3 class path changes (0 additions, 0 deletions, 3 modifications)
+2024-10-22T16:32:54.249-03:00  INFO 17972 --- [montadora] [Thread-414] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-10-22T16:32:54.250-03:00  INFO 17972 --- [montadora] [Thread-414] com.zaxxer.hikari.HikariDataSource       : HikariPool-109 - Shutdown initiated...
+2024-10-22T16:32:54.252-03:00  INFO 17972 --- [montadora] [Thread-414] com.zaxxer.hikari.HikariDataSource       : HikariPool-109 - Shutdown completed.
+2024-10-22T16:32:54.371-03:00  INFO 17972 --- [montadora] [restartedMain] b.c.e.montadora.MontadoraApplication     : Starting MontadoraApplication using Java 17.0.11 with PID 17972 (C:\Users\lucas\OneDrive\Desktop\Residencia\api\workspace\trabalhoIndividual\montadora\target\classes started by Lucas in C:\Users\lucas\OneDrive\Desktop\Residencia\api\workspace\trabalhoIndividual\montadora)
+2024-10-22T16:32:54.372-03:00  INFO 17972 --- [montadora] [restartedMain] b.c.e.montadora.MontadoraApplication     : No active profile set, falling back to 1 default profile: "default"
+2024-10-22T16:32:54.716-03:00  INFO 17972 --- [montadora] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-10-22T16:32:54.753-03:00  INFO 17972 --- [montadora] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 36 ms. Found 5 JPA repository interfaces.
+2024-10-22T16:32:54.917-03:00  INFO 17972 --- [montadora] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8000 (http)
+2024-10-22T16:32:54.917-03:00  INFO 17972 --- [montadora] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-10-22T16:32:54.917-03:00  INFO 17972 --- [montadora] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-10-22T16:32:54.954-03:00  INFO 17972 --- [montadora] [restartedMain] o.a.c.c.C.[.[localhost].[/montadora]     : Initializing Spring embedded WebApplicationContext
+2024-10-22T16:32:54.954-03:00  INFO 17972 --- [montadora] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 580 ms
+2024-10-22T16:32:55.029-03:00  INFO 17972 --- [montadora] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-10-22T16:32:55.035-03:00  INFO 17972 --- [montadora] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-10-22T16:32:55.049-03:00  INFO 17972 --- [montadora] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-10-22T16:32:55.051-03:00  INFO 17972 --- [montadora] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-110 - Starting...
+2024-10-22T16:32:55.128-03:00  INFO 17972 --- [montadora] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-110 - Added connection org.postgresql.jdbc.PgConnection@6df9a6b5
+2024-10-22T16:32:55.128-03:00  INFO 17972 --- [montadora] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-110 - Start completed.
+2024-10-22T16:32:55.273-03:00  INFO 17972 --- [montadora] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-10-22T16:32:55.394-03:00  INFO 17972 --- [montadora] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-10-22T16:32:55.551-03:00 TRACE 17972 --- [montadora] [restartedMain] eGlobalAuthenticationAutowiredConfigurer : Eagerly initializing {webSecurityConfig=br.com.example.montadora.security.WebSecurityConfig$$SpringCGLIB$$0@a0bc85b}
+2024-10-22T16:32:55.555-03:00  INFO 17972 --- [montadora] [restartedMain] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-10-22T16:32:55.555-03:00  WARN 17972 --- [montadora] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-10-22T16:32:55.806-03:00 DEBUG 17972 --- [montadora] [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 24 mappings in 'requestMappingHandlerMapping'
+2024-10-22T16:32:55.898-03:00 DEBUG 17972 --- [montadora] [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**, /swagger-ui*/*swagger-initializer.js, /swagger-ui*/**] in 'resourceHandlerMapping'
+2024-10-22T16:32:55.947-03:00 DEBUG 17972 --- [montadora] [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, LogoutFilter, AuthTokenFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2024-10-22T16:32:56.008-03:00 DEBUG 17972 --- [montadora] [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-10-22T16:32:56.021-03:00 DEBUG 17972 --- [montadora] [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-10-22T16:32:56.149-03:00  INFO 17972 --- [montadora] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-10-22T16:32:56.166-03:00  INFO 17972 --- [montadora] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8000 (http) with context path '/montadora'
+2024-10-22T16:32:56.171-03:00  INFO 17972 --- [montadora] [restartedMain] b.c.e.montadora.MontadoraApplication     : Started MontadoraApplication in 1.837 seconds (process running for 13355.755)
+2024-10-22T16:32:56.173-03:00  INFO 17972 --- [montadora] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
