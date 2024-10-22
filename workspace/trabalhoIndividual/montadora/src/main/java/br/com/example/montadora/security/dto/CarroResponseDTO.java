@@ -6,8 +6,17 @@ public class CarroResponseDTO {
 
 	private String marca;
 	private String modelo;
-	private Long ano;
-	private String nomeConcessionaria;
+	private String ano;
+//	private String nomeConcessionaria;
+
+	public CarroResponseDTO() {
+	}
+
+	public CarroResponseDTO(String marca, String modelo, String ano) {
+		this.marca = marca;
+		this.modelo = modelo;
+		this.ano = ano;
+	}
 
 	public String getMarca() {
 		return marca;
@@ -25,21 +34,21 @@ public class CarroResponseDTO {
 		this.modelo = modelo;
 	}
 
-	public Long getAno() {
+	public String getAno() {
 		return ano;
 	}
 
-	public void setAno(Long ano) {
+	public void setAno(String ano) {
 		this.ano = ano;
 	}
 
-	public String getNomeConcessionaria() {
-		return nomeConcessionaria;
-	}
-
-	public void setNomeConcessionaria(String nomeConcessionaria) {
-		this.nomeConcessionaria = nomeConcessionaria;
-	}
+//	public String getNomeConcessionaria() {
+//		return nomeConcessionaria;
+//	}
+//
+//	public void setNomeConcessionaria(String nomeConcessionaria) {
+//		this.nomeConcessionaria = nomeConcessionaria;
+//	}
 
 	public Carro toCarro() {
 		return new Carro(this.marca, this.modelo, this.ano);

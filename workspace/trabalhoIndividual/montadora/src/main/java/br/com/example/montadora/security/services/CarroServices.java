@@ -2,6 +2,8 @@ package br.com.example.montadora.security.services;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,12 +18,14 @@ public class CarroServices {
 
 	@Autowired
 	private CarroRepository carroRepository;
-	
+
 	@Autowired
 	private ConcessionariaRepository concessionariaRepository;
 
-	public List<Carro> listarCarros() {
-		return carroRepository.findAll();
+	public List<CarroResponseDTO> listarCarros() {
+		List<Carro> carros = carroRepository.findAll();
+		return carros.stream().map(carro -> new CarroResponseDTO(carro.getModelo(), carro.getMarca(), carro.getAno()))
+				.collect(Collectors.toList());
 	}
 
 	public void cadastrarCarro(CarroResponseDTO carroResponseDTO) {
@@ -30,11 +34,12 @@ public class CarroServices {
 		newCarro.setModelo(carroResponseDTO.getModelo());
 		newCarro.setAno(carroResponseDTO.getAno());
 
-		Concessionaria concessionaria = concessionariaRepository.buscarConce(carroResponseDTO.getNomeConcessionaria());
+//		Concessionaria concessionaria = concessionariaRepository.buscarConce(carroResponseDTO.getNomeConcessionaria());
+		Concessionaria concessionaria = concessionariaRepository.buscarConceUnica();
 		newCarro.setFkConcessionaria(concessionaria);
-		
+
 		carroRepository.save(newCarro);
-		
+
 	}
 
 	public CarroResponseDTO buscarPorId(Integer id) {
@@ -47,7 +52,7 @@ public class CarroServices {
 	}
 
 	public boolean deletarCarro(Integer id) {
-		if(carroRepository.existsById(id)) {
+		if (carroRepository.existsById(id)) {
 			carroRepository.deleteById(id);
 			return true;
 		} else {
@@ -57,12 +62,12 @@ public class CarroServices {
 
 	public Carro atualizarCarro(Integer id, CarroResponseDTO carroResponseDTO) {
 		Carro carroExistente = carroRepository.findById(id).orElse(null);
-		
-		if(carroExistente != null) {
+
+		if (carroExistente != null) {
 			carroExistente.setMarca(carroResponseDTO.getMarca());
 			carroExistente.setModelo(carroResponseDTO.getModelo());
 			carroExistente.setAno(carroResponseDTO.getAno());
-			
+
 			return carroRepository.save(carroExistente);
 		} else {
 			return null;

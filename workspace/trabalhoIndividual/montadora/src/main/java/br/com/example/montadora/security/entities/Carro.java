@@ -25,7 +25,7 @@ public class Carro {
 	private String modelo;
 
 	@Column(name = "car_int_ano")
-	private Long ano;
+	private String ano;
 
 	@ManyToOne
 	@JoinColumn(name = "fk_concessionaria")
@@ -34,7 +34,7 @@ public class Carro {
 	public Carro() {
 	}
 
-	public Carro(Integer id, String marca, String modelo, Long ano, Concessionaria fkConcessionaria) {
+	public Carro(Integer id, String marca, String modelo, String ano, Concessionaria fkConcessionaria) {
 		this.id = id;
 		this.marca = marca;
 		this.modelo = modelo;
@@ -42,7 +42,7 @@ public class Carro {
 		this.fkConcessionaria = fkConcessionaria;
 	}
 	
-	public Carro(String marca, String modelo, Long ano) {
+	public Carro(String marca, String modelo, String ano) {
 		this.marca = marca;
 		this.modelo = modelo;
 		this.ano = ano;
@@ -72,11 +72,11 @@ public class Carro {
 		this.modelo = modelo;
 	}
 
-	public Long getAno() {
+	public String getAno() {
 		return ano;
 	}
 
-	public void setAno(Long ano) {
+	public void setAno(String ano) {
 		this.ano = ano;
 	}
 

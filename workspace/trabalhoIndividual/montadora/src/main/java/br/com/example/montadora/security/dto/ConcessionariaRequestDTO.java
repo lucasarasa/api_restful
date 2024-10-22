@@ -5,7 +5,17 @@ public class ConcessionariaRequestDTO {
 	private String nome;
 	private String telefone;
 	private String email;
-	private String nomeEndereco;
+//	private String nomeEndereco;
+
+	public ConcessionariaRequestDTO() {
+	}
+
+	public ConcessionariaRequestDTO(String nome, String telefone, String email) {
+
+		this.nome = nome;
+		this.telefone = telefone;
+		this.email = email;
+	}
 
 	public String getNome() {
 		return nome;
@@ -31,12 +41,12 @@ public class ConcessionariaRequestDTO {
 		this.email = email;
 	}
 
-	public String getNomeEndereco() {
-		return nomeEndereco;
-	}
-
-	public void setNomeEndereco(String nomeEndereco) {
-		this.nomeEndereco = nomeEndereco;
-	}
+//	public String getNomeEndereco() {
+//		return nomeEndereco;
+//	}
+//
+//	public void setNomeEndereco(String nomeEndereco) {
+//		this.nomeEndereco = nomeEndereco;
+//	}
 
 }

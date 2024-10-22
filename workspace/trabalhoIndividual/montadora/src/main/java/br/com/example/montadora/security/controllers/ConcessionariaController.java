@@ -18,11 +18,11 @@ import br.com.example.montadora.security.dto.ConcessionariaRequestDTO;
 import br.com.example.montadora.security.dto.EnderecoRequestDTO;
 import br.com.example.montadora.security.dto.EnderecoResponseDTO;
 import br.com.example.montadora.security.dto.MessageResponseDTO;
-import br.com.example.montadora.security.entities.Concessionaria;
 import br.com.example.montadora.security.entities.Endereco;
 import br.com.example.montadora.security.services.ConcessionariaServices;
 import br.com.example.montadora.security.services.EmailService;
 import br.com.example.montadora.security.services.EnderecoService;
+import io.swagger.v3.oas.annotations.Operation;
 
 @RestController
 @RequestMapping("/concessionaria")
@@ -42,29 +42,34 @@ public class ConcessionariaController {
 //		return enderecoService.consultarEndereco(cep, complemento, numero);
 //	}
 	
-	@GetMapping("/listarConcessionarias")
-	public List<Concessionaria> listarConce(){
+	@GetMapping
+	@Operation(summary = "Obter a lista de todas as concessionárias.")
+	public List<ConcessionariaRequestDTO> listarConce(){
 		return concessionariaService.listarConce();
 	}
 	
-	@PostMapping("/cadastrarConce")
+	@PostMapping
+	@Operation(summary = "Cadastrar concessionária.")
 		public ResponseEntity<?> cadastrarConce(@RequestBody ConcessionariaRequestDTO concessionariaRequestDTO){
 			concessionariaService.cadastrarConcessionaria(concessionariaRequestDTO);
 			return ResponseEntity.ok(new MessageResponseDTO("Concessionaria cadastrada com sucesso!"));
 		}
 	
-	@PostMapping("/adicionarEnderecoConce")
+	@PostMapping("/")
+	@Operation(summary = "Adicionar o endereço da concessionária.")
 	public EnderecoResponseDTO testeEndereco(@RequestBody EnderecoRequestDTO enderecoRequestDTO) {
 		return enderecoService.consultarEndereco(enderecoRequestDTO);
 	}
 	
-	@PutMapping("/atualizarEnderecoConce")
+	@PutMapping("/")
+	@Operation(summary = "Atualizar o endereço da concessionária.")
 	public ResponseEntity<Endereco> atualizarEndereco(@PathVariable Integer id, @RequestBody EnderecoRequestDTO enderecoRequestDTO){
 		Endereco conceEnderecoAtt = enderecoService.atualizarEndereco(id, enderecoRequestDTO);
 		return ResponseEntity.ok(conceEnderecoAtt);
 	}
 	
-	@DeleteMapping("/deleteId/{id}")
+	@DeleteMapping("/{id}")
+	@Operation(summary = "Deletar concessionária.")
 	public ResponseEntity<String> deletarId(@PathVariable Integer id){
 		boolean resultDelete = concessionariaService.concessionariaDelete(id);
 		if(resultDelete) {
@@ -74,16 +79,17 @@ public class ConcessionariaController {
 		}
 	}
 
-	@GetMapping("/dispararEmailParaComprador")
+	@GetMapping("/")
+	@Operation(summary = "Disparar e-mail para o comprador.")
 	public String mailSend() {
 		emailService.mailSend();
 		return "Email enviado com sucesso!";
 	}
 	
-	@PutMapping("/atualizarConcessionaria")
-	public ResponseEntity<Concessionaria> atualizarConcessionaria(@PathVariable Integer id, @RequestBody Concessionaria conce){
-		Concessionaria conceAtt = concessionariaService.atualizarConcessionaria(id, conce);
-		return ResponseEntity.ok(conceAtt);
-		
+	@PutMapping
+	@Operation(summary = "Atualizar concessionária.")
+	public ResponseEntity<?> atualizarConcessionaria(@RequestBody ConcessionariaRequestDTO conce){
+		concessionariaService.atualizarConcessionaria(conce);
+		return ResponseEntity.ok(new MessageResponseDTO("Concessionaria atualizada com sucesso!"));		
 	}
 }

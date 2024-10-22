@@ -1,6 +1,7 @@
 package br.com.example.montadora.security.services;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,8 +21,11 @@ public class ConcessionariaServices {
 	@Autowired
 	private EnderecoRepository enderecoRepository;
 	
-	public List<Concessionaria> listarConce(){
-		return concessionariaRepository.findAll();
+	public List<ConcessionariaRequestDTO> listarConce(){
+		List<Concessionaria> concessionarias = concessionariaRepository.findAll();
+		return concessionarias.stream().map(concessionaria -> new ConcessionariaRequestDTO(concessionaria.getNome(),
+				concessionaria.getTelefone(),
+				concessionaria.getEmail())).collect(Collectors.toList());
 	}
 	
 	public void cadastrarConcessionaria(ConcessionariaRequestDTO concessionariaRequestDTO) {
@@ -30,24 +34,22 @@ public class ConcessionariaServices {
 		newConce.setTelefone(concessionariaRequestDTO.getTelefone());
 		newConce.setEmail(concessionariaRequestDTO.getEmail());
 		
-		Endereco endereco = enderecoRepository.buscarEndereco(concessionariaRequestDTO.getNomeEndereco());
+//		Endereco endereco = enderecoRepository.buscarEndereco(concessionariaRequestDTO.getNomeEndereco());
+		Endereco endereco = enderecoRepository.buscarEnderecoUnico();
 		newConce.setFkEndereco(endereco);
 		
 		concessionariaRepository.save(newConce);
 	}
 	
-	public Concessionaria atualizarConcessionaria(Integer id, Concessionaria concessionaria) {
-		Concessionaria conceExistente = concessionariaRepository.findById(id).orElse(null);
-		
-		if(conceExistente != null) {
-			conceExistente.setNome(concessionaria.getNome());
-			conceExistente.setTelefone(concessionaria.getTelefone());
-			
-			return concessionariaRepository.save(conceExistente);
-		} else {
-			return null;
-		}
-	}
+	public void atualizarConcessionaria(ConcessionariaRequestDTO concessionariaAtualizada) {
+	Concessionaria concessionaria = concessionariaRepository.buscarConceUnica();
+	concessionaria.setNome(concessionariaAtualizada.getNome());
+	concessionaria.setEmail(concessionariaAtualizada.getEmail());
+	concessionaria.setTelefone(concessionariaAtualizada.getTelefone());
+
+	concessionariaRepository.save(concessionaria);
+
+}
 	
 	public boolean concessionariaDelete(Integer id) {
 		if(concessionariaRepository.existsById(id)) {

@@ -104,7 +104,7 @@ public class Concessionaria {
 		this.fkuser = fkuser;
 	}
 
-	public Endereco getFkEndereco() {
+	public Endereco getFkEndereco(Endereco fkEndereco) {
 		return fkEndereco;
 	}
 

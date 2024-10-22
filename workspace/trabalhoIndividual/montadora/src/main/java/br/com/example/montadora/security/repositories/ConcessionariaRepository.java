@@ -11,4 +11,7 @@ public interface ConcessionariaRepository extends JpaRepository<Concessionaria, 
 
 	@Query(value ="select * from concessionaria where con_tx_nome = :nome;", nativeQuery=true)
 	public Concessionaria buscarConce(String nome);
+	
+	@Query(value="select * from concessionaria limit 1", nativeQuery =true)
+	public Concessionaria buscarConceUnica();
 }
