@@ -39,7 +39,7 @@ public class SwaggerConfig {
 		
 		Info info = new Info();
 		info.setTitle("Carro & Conce API");
-		info.setVersion("4.4.0");
+		info.setVersion("4.5.0");
 		info.setDescription("API to manage carros and concessionarias");
 		info.setContact(contact);
 		info.setLicense(license);
