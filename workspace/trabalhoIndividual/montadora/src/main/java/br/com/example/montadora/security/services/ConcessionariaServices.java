@@ -36,6 +36,7 @@ public class ConcessionariaServices {
 		
 //		Endereco endereco = enderecoRepository.buscarEndereco(concessionariaRequestDTO.getNomeEndereco());
 		Endereco endereco = enderecoRepository.buscarEnderecoUnico();
+
 		newConce.setFkEndereco(endereco);
 		
 		concessionariaRepository.save(newConce);

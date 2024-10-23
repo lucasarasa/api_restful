@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.example.montadora.security.dto.CarroRequestDTO;
 import br.com.example.montadora.security.dto.CarroResponseDTO;
 import br.com.example.montadora.security.entities.Carro;
 import br.com.example.montadora.security.entities.Concessionaria;
@@ -24,15 +25,15 @@ public class CarroServices {
 
 	public List<CarroResponseDTO> listarCarros() {
 		List<Carro> carros = carroRepository.findAll();
-		return carros.stream().map(carro -> new CarroResponseDTO(carro.getModelo(), carro.getMarca(), carro.getAno()))
+		return carros.stream().map(carro -> new CarroResponseDTO(carro.getModelo(), carro.getMarca(), carro.getAno(), carro.getFkConcessionaria()))
 				.collect(Collectors.toList());
 	}
 
-	public void cadastrarCarro(CarroResponseDTO carroResponseDTO) {
+	public void cadastrarCarro(CarroRequestDTO carroRequestDTO) {
 		Carro newCarro = new Carro();
-		newCarro.setMarca(carroResponseDTO.getMarca());
-		newCarro.setModelo(carroResponseDTO.getModelo());
-		newCarro.setAno(carroResponseDTO.getAno());
+		newCarro.setMarca(carroRequestDTO.getMarca());
+		newCarro.setModelo(carroRequestDTO.getModelo());
+		newCarro.setAno(carroRequestDTO.getAno());
 
 //		Concessionaria concessionaria = concessionariaRepository.buscarConce(carroResponseDTO.getNomeConcessionaria());
 		Concessionaria concessionaria = concessionariaRepository.buscarConceUnica();
@@ -60,13 +61,13 @@ public class CarroServices {
 		}
 	}
 
-	public Carro atualizarCarro(Integer id, CarroResponseDTO carroResponseDTO) {
+	public Carro atualizarCarro(Integer id, CarroRequestDTO carroRequestDTO) {
 		Carro carroExistente = carroRepository.findById(id).orElse(null);
 
 		if (carroExistente != null) {
-			carroExistente.setMarca(carroResponseDTO.getMarca());
-			carroExistente.setModelo(carroResponseDTO.getModelo());
-			carroExistente.setAno(carroResponseDTO.getAno());
+			carroExistente.setMarca(carroRequestDTO.getMarca());
+			carroExistente.setModelo(carroRequestDTO.getModelo());
+			carroExistente.setAno(carroRequestDTO.getAno());
 
 			return carroRepository.save(carroExistente);
 		} else {
