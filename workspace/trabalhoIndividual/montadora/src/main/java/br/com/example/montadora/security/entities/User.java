@@ -3,6 +3,8 @@ package br.com.example.montadora.security.entities;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -45,6 +47,7 @@ public class User {
 
 	@ManyToOne
 	@JoinColumn(name = "fk_concessionaria")
+	@JsonBackReference
 	private Concessionaria fkConcessionaria;
 
 	public User() {

@@ -48,36 +48,46 @@ public class ConcessionariaController {
 		return concessionariaService.listarConce();
 	}
 	
-	@PostMapping
-	@Operation(summary = "Cadastrar concessionária.")
-		public ResponseEntity<?> cadastrarConce(@RequestBody ConcessionariaRequestDTO concessionariaRequestDTO){
-			concessionariaService.cadastrarConcessionaria(concessionariaRequestDTO);
-			return ResponseEntity.ok(new MessageResponseDTO("Concessionaria cadastrada com sucesso!"));
-		}
+//	@PostMapping
+//	@Operation(summary = "Cadastrar concessionária.")
+//		public ResponseEntity<?> cadastrarConce(@RequestBody ConcessionariaRequestDTO concessionariaRequestDTO){
+//			concessionariaService.cadastrarConcessionaria(concessionariaRequestDTO);
+//			return ResponseEntity.ok(new MessageResponseDTO("Concessionaria cadastrada com sucesso!"));
+//		}
 	
-	@PostMapping("/")
-	@Operation(summary = "Adicionar o endereço da concessionária.")
-	public EnderecoResponseDTO testeEndereco(@RequestBody EnderecoRequestDTO enderecoRequestDTO) {
-		return enderecoService.consultarEndereco(enderecoRequestDTO);
-	}
+//	@PostMapping("/")
+//	@Operation(summary = "Adicionar o endereço da concessionária.")
+//	public EnderecoResponseDTO testeEndereco(@RequestBody EnderecoRequestDTO enderecoRequestDTO) {
+//		return enderecoService.consultarEndereco(enderecoRequestDTO);
+//	}
 	
-	@PutMapping("/")
+	@PutMapping("/{id}")
 	@Operation(summary = "Atualizar o endereço da concessionária.")
-	public ResponseEntity<Endereco> atualizarEndereco(@PathVariable Integer id, @RequestBody EnderecoRequestDTO enderecoRequestDTO){
+	public ResponseEntity<?> atualizarEndereco(@PathVariable Integer id, @RequestBody EnderecoRequestDTO enderecoRequestDTO){
 		Endereco conceEnderecoAtt = enderecoService.atualizarEndereco(id, enderecoRequestDTO);
-		return ResponseEntity.ok(conceEnderecoAtt);
-	}
-	
-	@DeleteMapping("/{id}")
-	@Operation(summary = "Deletar concessionária.")
-	public ResponseEntity<String> deletarId(@PathVariable Integer id){
-		boolean resultDelete = concessionariaService.concessionariaDelete(id);
-		if(resultDelete) {
-			return ResponseEntity.status(HttpStatus.OK).body("Concessionaria deletada com sucesso!");
-		}else {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Err: Falha ao deletar o objeto.");
+		if(conceEnderecoAtt!=null) {
+			return ResponseEntity.status(HttpStatus.OK).body("Endereço da concessionária atualizado com sucesso.");
+		} else {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Err: Falha ao atualizar o endereço.");
 		}
 	}
+	
+//	@DeleteMapping("/{id}")
+//	@Operation(summary = "Deletar concessionária.")
+//	public ResponseEntity<String> deletarId(@PathVariable Integer id){
+//		boolean resultDelete = concessionariaService.concessionariaDelete(id);
+//		if(resultDelete) {
+//			return ResponseEntity.status(HttpStatus.OK).body("Concessionaria deletada com sucesso!");
+//		}else {
+//			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Err: Falha ao deletar o objeto.");
+//		}
+//	}
+	
+//	@DeleteMapping("/{id}")
+//	@Operation(summary = "Deletar endereco.")
+//	public void deletarEndereco(Integer id) {
+//		enderecoService.deletarEndereco(id);
+//	}
 
 	@GetMapping("/")
 	@Operation(summary = "Disparar e-mail para o comprador.")

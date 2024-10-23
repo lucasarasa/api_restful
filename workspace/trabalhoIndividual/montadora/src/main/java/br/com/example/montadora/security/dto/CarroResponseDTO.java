@@ -1,24 +1,22 @@
 package br.com.example.montadora.security.dto;
 
 import br.com.example.montadora.security.entities.Carro;
-import br.com.example.montadora.security.entities.Concessionaria;
 
 public class CarroResponseDTO {
 
 	private String marca;
 	private String modelo;
 	private String ano;
-	private Concessionaria fkConcessionaria;
-//	private String nomeConcessionaria;
+	private String nomeConcessionaria;
 
 	public CarroResponseDTO() {
 	}
 
-	public CarroResponseDTO(String marca, String modelo, String ano, Concessionaria fkConcessionaria) {
+	public CarroResponseDTO(String marca, String modelo, String ano, String nomeConcessionaria) {
 		this.marca = marca;
 		this.modelo = modelo;
 		this.ano = ano;
-		this.fkConcessionaria = fkConcessionaria;
+		this.nomeConcessionaria = nomeConcessionaria;
 	}
 
 	public String getMarca() {
@@ -52,16 +50,16 @@ public class CarroResponseDTO {
 //	public void setNomeConcessionaria(String nomeConcessionaria) {
 //		this.nomeConcessionaria = nomeConcessionaria;
 //	}
-
-	public Concessionaria getFkConcessionaria() {
-		return fkConcessionaria;
+	public String getNomeConcessionaria() {
+		return nomeConcessionaria;
 	}
 
-	public void setFkConcessionaria(Concessionaria fkConcessionaria) {
-		this.fkConcessionaria = fkConcessionaria;
+	public void setNomeConcessionaria(String nomeConcessionaria) {
+		this.nomeConcessionaria = nomeConcessionaria;
 	}
 
 	public Carro toCarro() {
 		return new Carro(this.marca, this.modelo, this.ano);
 	}
+
 }

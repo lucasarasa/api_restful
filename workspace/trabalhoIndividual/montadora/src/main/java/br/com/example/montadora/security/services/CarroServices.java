@@ -25,8 +25,13 @@ public class CarroServices {
 
 	public List<CarroResponseDTO> listarCarros() {
 		List<Carro> carros = carroRepository.findAll();
-		return carros.stream().map(carro -> new CarroResponseDTO(carro.getModelo(), carro.getMarca(), carro.getAno(), carro.getFkConcessionaria()))
-				.collect(Collectors.toList());
+
+		return carros.stream().map(carro -> {
+
+			String nomeConcessionaria = carro.getFkConcessionaria().getNome();
+
+			return new CarroResponseDTO(carro.getModelo(), carro.getMarca(), carro.getAno(), nomeConcessionaria);
+		}).collect(Collectors.toList());
 	}
 
 	public void cadastrarCarro(CarroRequestDTO carroRequestDTO) {
@@ -45,10 +50,12 @@ public class CarroServices {
 
 	public CarroResponseDTO buscarPorId(Integer id) {
 		Optional<Carro> carro = carroRepository.findById(id);
+		
 		CarroResponseDTO carroResponseDTO = new CarroResponseDTO();
 		carroResponseDTO.setMarca(carro.get().getMarca());
 		carroResponseDTO.setModelo(carro.get().getModelo());
 		carroResponseDTO.setAno(carro.get().getAno());
+		carroResponseDTO.setNomeConcessionaria(carro.get().getFkConcessionaria().getNome());
 		return carroResponseDTO;
 	}
 

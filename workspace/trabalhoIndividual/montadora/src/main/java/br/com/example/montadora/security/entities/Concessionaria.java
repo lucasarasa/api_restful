@@ -2,6 +2,8 @@ package br.com.example.montadora.security.entities;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -30,12 +32,12 @@ public class Concessionaria {
 	@Column(name = "con_tx_email")
 	private String email;
 
-//	@OneToMany(mappedBy = "fkConcessionaria")
-//	@Column(name = "con_fk_carro")
-//	private List<Carro> fkCarro;
+	@OneToMany(mappedBy = "fkConcessionaria")
+	@Column(name = "con_fk_carro")
+	private List<Carro> fkCarro;
 
 	@OneToMany(mappedBy = "fkConcessionaria")
-	@Column(name = "con_fk_user")
+	@JsonManagedReference
 	private List<User> fkuser;
 
 	@OneToOne
@@ -45,13 +47,13 @@ public class Concessionaria {
 	public Concessionaria() {
 	}
 
-	public Concessionaria(Integer id, String nome, String telefone, String email,
+	public Concessionaria(Integer id, String nome, String telefone, String email, List<Carro> fkCarro,
 			List<User> fkuser, Endereco fkEndereco) {
 		this.id = id;
 		this.nome = nome;
 		this.telefone = telefone;
 		this.email = email;
-//		this.fkCarro = fkCarro;
+		this.fkCarro = fkCarro;
 		this.fkuser = fkuser;
 		this.fkEndereco = fkEndereco;
 	}
@@ -88,13 +90,13 @@ public class Concessionaria {
 		this.email = email;
 	}
 
-//	public List<Carro> getFkCarro() {
-//		return fkCarro;
-//	}
-//
-//	public void setFkCarro(List<Carro> fkCarro) {
-//		this.fkCarro = fkCarro;
-//	}
+	public List<Carro> getFkCarro() {
+		return fkCarro;
+	}
+
+	public void setFkCarro(List<Carro> fkCarro) {
+		this.fkCarro = fkCarro;
+	}
 
 	public List<User> getFkuser() {
 		return fkuser;
@@ -112,10 +114,10 @@ public class Concessionaria {
 		this.fkEndereco = fkEndereco;
 	}
 
-//	@Override
-//	public String toString() {
-//		return "Concessionaria [id=" + id + ", nome=" + nome + ", telefone=" + telefone + ", email=" + email
-//				+ ", fkCarro=" + fkCarro + ", fkuser=" + fkuser + ", fkEndereco=" + fkEndereco + "]";
-//	}
+	@Override
+	public String toString() {
+		return "Concessionaria [id=" + id + ", nome=" + nome + ", telefone=" + telefone + ", email=" + email
+				+ ", fkCarro=" + fkCarro + ", fkuser=" + fkuser + ", fkEndereco=" + fkEndereco + "]";
+	}
 
 }
