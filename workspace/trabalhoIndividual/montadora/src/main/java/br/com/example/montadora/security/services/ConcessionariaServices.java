@@ -44,9 +44,15 @@ public class ConcessionariaServices {
 	
 	public void atualizarConcessionaria(ConcessionariaRequestDTO concessionariaAtualizada) {
 	Concessionaria concessionaria = concessionariaRepository.buscarConceUnica();
-	concessionaria.setNome(concessionariaAtualizada.getNome());
-	concessionaria.setEmail(concessionariaAtualizada.getEmail());
-	concessionaria.setTelefone(concessionariaAtualizada.getTelefone());
+	if(concessionariaAtualizada.getNome()!=null) {
+		concessionaria.setNome(concessionariaAtualizada.getNome());		
+	}
+	if(concessionariaAtualizada.getEmail()!=null) {
+		concessionaria.setEmail(concessionariaAtualizada.getEmail());		
+	}
+	if(concessionariaAtualizada.getTelefone()!=null) {
+		concessionaria.setTelefone(concessionariaAtualizada.getTelefone());
+	}
 
 	concessionariaRepository.save(concessionaria);
 

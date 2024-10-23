@@ -50,7 +50,7 @@ public class CarroServices {
 
 	public CarroResponseDTO buscarPorId(Integer id) {
 		Optional<Carro> carro = carroRepository.findById(id);
-		
+
 		CarroResponseDTO carroResponseDTO = new CarroResponseDTO();
 		carroResponseDTO.setMarca(carro.get().getMarca());
 		carroResponseDTO.setModelo(carro.get().getModelo());
@@ -71,14 +71,17 @@ public class CarroServices {
 	public Carro atualizarCarro(Integer id, CarroRequestDTO carroRequestDTO) {
 		Carro carroExistente = carroRepository.findById(id).orElse(null);
 
-		if (carroExistente != null) {
+		if (carroRequestDTO.getMarca() != null) {
 			carroExistente.setMarca(carroRequestDTO.getMarca());
-			carroExistente.setModelo(carroRequestDTO.getModelo());
-			carroExistente.setAno(carroRequestDTO.getAno());
-
-			return carroRepository.save(carroExistente);
-		} else {
-			return null;
 		}
+		if (carroRequestDTO.getModelo() != null) {
+			carroExistente.setModelo(carroRequestDTO.getModelo());
+		}
+		if (carroRequestDTO.getAno() != null) {
+			carroExistente.setAno(carroRequestDTO.getAno());			
+		}
+
+		return carroRepository.save(carroExistente);
+
 	}
 }

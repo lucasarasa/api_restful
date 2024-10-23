@@ -21,15 +21,14 @@ public class UserServices {
 
 	@Autowired
 	ConcessionariaRepository concessionariaRepository;
-	
+
 	@Autowired
-    PasswordEncoder encoder;
+	PasswordEncoder encoder;
 
 	public List<UserResponseDTO> listarUsuarios() {
 		List<User> users = userRepository.findAll();
-		return users.stream().map(user -> new UserResponseDTO(user.getUsername(),
-				user.getEmail(),
-				user.getPassword())).collect(Collectors.toList());
+		return users.stream().map(user -> new UserResponseDTO(user.getUsername(), user.getEmail(), user.getPassword()))
+				.collect(Collectors.toList());
 	}
 
 	public void cadastrarUsuario(String username, String email, String password) {
@@ -55,15 +54,17 @@ public class UserServices {
 
 	public User atualizarUsuario(Integer id, UserResponseDTO userResponseDTO) {
 		User user = userRepository.findById(id).orElse(null);
-		if (user != null) {
+		if (userResponseDTO.getUsername() != null) {
 			user.setUsername(userResponseDTO.getUsername());
-			user.setEmail(userResponseDTO.getEmail());
-			user.setPassword(encoder.encode(userResponseDTO.getPassword()));
-
-			return userRepository.save(user);
-		} else {
-			return null;
 		}
+		if (userResponseDTO.getEmail() != null) {
+			user.setEmail(userResponseDTO.getEmail());
+		}
+		if (userResponseDTO.getPassword() != null) {
+			user.setPassword(encoder.encode(userResponseDTO.getPassword()));
+		}
+
+		return userRepository.save(user);
 
 	}
 }
