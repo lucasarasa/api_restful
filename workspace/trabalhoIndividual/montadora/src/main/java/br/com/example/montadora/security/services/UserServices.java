@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import br.com.example.montadora.security.dto.UserResponseDTO;
@@ -20,6 +21,9 @@ public class UserServices {
 
 	@Autowired
 	ConcessionariaRepository concessionariaRepository;
+	
+	@Autowired
+    PasswordEncoder encoder;
 
 	public List<UserResponseDTO> listarUsuarios() {
 		List<User> users = userRepository.findAll();
@@ -54,7 +58,7 @@ public class UserServices {
 		if (user != null) {
 			user.setUsername(userResponseDTO.getUsername());
 			user.setEmail(userResponseDTO.getEmail());
-			user.setPassword(userResponseDTO.getPassword());
+			user.setPassword(encoder.encode(userResponseDTO.getPassword()));
 
 			return userRepository.save(user);
 		} else {

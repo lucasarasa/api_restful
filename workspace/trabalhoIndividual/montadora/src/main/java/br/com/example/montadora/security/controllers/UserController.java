@@ -34,13 +34,13 @@ public class UserController {
 		return userServices.listarUsuarios();
 	}
 
-	@PostMapping
-	@Operation(summary = "Cadastrar usuário.")
-	public ResponseEntity<?> cadastrarUsuario(@RequestParam String username, @RequestParam String email,
-			@RequestParam String password) {
-		userServices.cadastrarUsuario(username, email, password);
-		return ResponseEntity.ok(new MessageResponseDTO("Usuário cadastrado com sucesso!"));
-	}
+//	@PostMapping
+//	@Operation(summary = "Cadastrar usuário.")
+//	public ResponseEntity<?> cadastrarUsuario(@RequestParam String username, @RequestParam String email,
+//			@RequestParam String password) {
+//		userServices.cadastrarUsuario(username, email, password);
+//		return ResponseEntity.ok(new MessageResponseDTO("Usuário cadastrado com sucesso!"));
+//	}
 
 	@DeleteMapping("/{id}")
 	@Operation(summary = "Deletar usuário.")
