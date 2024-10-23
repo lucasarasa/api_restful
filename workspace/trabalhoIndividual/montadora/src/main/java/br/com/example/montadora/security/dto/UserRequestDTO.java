@@ -1,17 +1,18 @@
 package br.com.example.montadora.security.dto;
 
-public class UserResponseDTO {
+public class UserRequestDTO {
 
 	private String username;
 	private String email;
+	private String password;
 
-	public UserResponseDTO() {
+	public UserRequestDTO() {
 	}
 
-	public UserResponseDTO(String username, String email) {
-		super();
+	public UserRequestDTO(String username, String email, String password) {
 		this.username = username;
 		this.email = email;
+		this.password = password;
 	}
 
 	public String getUsername() {
@@ -30,4 +31,11 @@ public class UserResponseDTO {
 		this.email = email;
 	}
 
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
 }

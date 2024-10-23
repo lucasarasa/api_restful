@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import br.com.example.montadora.security.dto.UserRequestDTO;
 import br.com.example.montadora.security.dto.UserResponseDTO;
 import br.com.example.montadora.security.entities.Concessionaria;
 import br.com.example.montadora.security.entities.User;
@@ -27,7 +28,7 @@ public class UserServices {
 
 	public List<UserResponseDTO> listarUsuarios() {
 		List<User> users = userRepository.findAll();
-		return users.stream().map(user -> new UserResponseDTO(user.getUsername(), user.getEmail(), user.getPassword()))
+		return users.stream().map(user -> new UserResponseDTO(user.getUsername(), user.getEmail()))
 				.collect(Collectors.toList());
 	}
 
@@ -52,16 +53,16 @@ public class UserServices {
 		}
 	}
 
-	public User atualizarUsuario(Integer id, UserResponseDTO userResponseDTO) {
+	public User atualizarUsuario(Integer id, UserRequestDTO userRequestDTO) {
 		User user = userRepository.findById(id).orElse(null);
-		if (userResponseDTO.getUsername() != null) {
-			user.setUsername(userResponseDTO.getUsername());
+		if (userRequestDTO.getUsername() != null) {
+			user.setUsername(userRequestDTO.getUsername());
 		}
-		if (userResponseDTO.getEmail() != null) {
-			user.setEmail(userResponseDTO.getEmail());
+		if (userRequestDTO.getEmail() != null) {
+			user.setEmail(userRequestDTO.getEmail());
 		}
-		if (userResponseDTO.getPassword() != null) {
-			user.setPassword(encoder.encode(userResponseDTO.getPassword()));
+		if (userRequestDTO.getPassword() != null) {
+			user.setPassword(encoder.encode(userRequestDTO.getPassword()));
 		}
 
 		return userRepository.save(user);

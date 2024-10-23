@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.example.montadora.security.dto.MessageResponseDTO;
 import br.com.example.montadora.security.dto.SignupRequestDTO;
+import br.com.example.montadora.security.dto.UserRequestDTO;
 import br.com.example.montadora.security.dto.UserResponseDTO;
 import br.com.example.montadora.security.entities.Concessionaria;
 import br.com.example.montadora.security.entities.Role;
@@ -131,7 +132,7 @@ public class UserController {
 
 	@PutMapping("/{id}")
 	@Operation(summary = "Atualizar usuário.")
-	public ResponseEntity<?> atualizarUsuario(@PathVariable Integer id, @RequestBody UserResponseDTO user) {
+	public ResponseEntity<?> atualizarUsuario(@PathVariable Integer id, @RequestBody UserRequestDTO user) {
 		User userAtt = userServices.atualizarUsuario(id, user);
 
 		if (userAtt != null) {
