@@ -1,11 +1,10 @@
 package br.com.example.montadora.security.controllers;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -13,6 +12,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,16 +21,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.example.montadora.security.dto.JwtResponseDTO;
 import br.com.example.montadora.security.dto.LoginRequestDTO;
-import br.com.example.montadora.security.dto.MessageResponseDTO;
-import br.com.example.montadora.security.dto.SignupRequestDTO;
-import br.com.example.montadora.security.entities.Concessionaria;
-import br.com.example.montadora.security.entities.Role;
-import br.com.example.montadora.security.entities.User;
-import br.com.example.montadora.security.enums.RoleEnum;
 import br.com.example.montadora.security.jwt.JwtUtils;
 import br.com.example.montadora.security.repositories.ConcessionariaRepository;
 import br.com.example.montadora.security.repositories.RoleRepository;
 import br.com.example.montadora.security.repositories.UserRepository;
+import br.com.example.montadora.security.services.FotoService;
 import br.com.example.montadora.security.services.UserDetailsImpl;
 import jakarta.validation.Valid;
 
@@ -54,6 +50,9 @@ public class AuthController {
 	
 	@Autowired
 	ConcessionariaRepository concessionariaRepository;
+	
+	@Autowired
+	FotoService fotoService;
 
 	@PostMapping("/signin")
 	public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequestDTO loginRequest) {
@@ -123,4 +122,10 @@ public class AuthController {
 //
 //		return ResponseEntity.ok(new MessageResponseDTO("Usuário registrado com sucesso!"));
 //	}
+	
+	@GetMapping("/{id}/foto")
+	public ResponseEntity<byte[]> getFoto(@PathVariable Integer id) throws Exception {
+		byte[] foto = fotoService.getFoto(id);
+		return ResponseEntity.ok().contentType(MediaType.IMAGE_PNG).body(foto);
+	}
 }

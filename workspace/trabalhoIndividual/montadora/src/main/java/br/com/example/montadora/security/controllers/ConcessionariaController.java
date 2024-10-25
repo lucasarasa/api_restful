@@ -67,14 +67,20 @@ public class ConcessionariaController {
 	@Operation(summary = "Cadastrar concessionária.")
 	public ResponseEntity<?> cadastrarConce(@RequestBody ConcessionariaRequestDTO concessionariaRequestDTO) {
 		List<Concessionaria> concessionarias = concessionariaRepository.findAll();
-
-		if (!concessionarias.isEmpty()) {
-			return ResponseEntity.status(HttpStatus.CONFLICT)
-					.body("Já existe uma concessionária cadastrada. Não é possível cadastrar outra.");
-		} else {
-			concessionariaService.cadastrarConcessionaria(concessionariaRequestDTO);
+		List<Endereco> enderecos = enderecoRepository.findAll();
+		
+		if(enderecos.isEmpty()) {
+			return ResponseEntity.status(HttpStatus.CONFLICT).body("Erro ao cadastrar a concessionária. Endereço não cadastrado.");
 			
-			return ResponseEntity.status(HttpStatus.CREATED).body("Concessionária cadastrada com sucesso.");
+		} else {
+			if (!concessionarias.isEmpty()) {
+				return ResponseEntity.status(HttpStatus.CONFLICT)
+						.body("Já existe uma concessionária cadastrada. Não é possível cadastrar outra.");
+			} else {
+				concessionariaService.cadastrarConcessionaria(concessionariaRequestDTO);
+				
+				return ResponseEntity.status(HttpStatus.CREATED).body("Concessionária cadastrada com sucesso.");
+			}
 		}
 
 	}
@@ -113,7 +119,7 @@ public class ConcessionariaController {
 	@PreAuthorize("hasRole('ADMIN')")
 	@DeleteMapping("/{id}")
 	@Operation(summary = "Deletar concessionária.")
-	public ResponseEntity<String> deletarId(@PathVariable Integer id){
+	public ResponseEntity<?> deletarId(@PathVariable Integer id){
 		boolean resultDelete = concessionariaService.concessionariaDelete(id);
 		if(resultDelete) {
 			return ResponseEntity.status(HttpStatus.OK).body("Concessionaria deletada com sucesso!");
@@ -124,10 +130,16 @@ public class ConcessionariaController {
 
 	@SecurityRequirement(name = "Bearer Auth")
 	@PreAuthorize("hasRole('ADMIN')")
-	@DeleteMapping("/endereço{id}")
+	@DeleteMapping("/{id}/")
 	@Operation(summary = "Deletar endereco.")
-	public void deletarEndereco(Integer id) {
-		enderecoService.deletarEndereco(id);
+	public ResponseEntity<?> deletarEndereco(@PathVariable Integer id) {
+		boolean resultDelete = enderecoService.deletarEndereco(id);
+		if(resultDelete) {
+			return ResponseEntity.status(HttpStatus.OK).body("Endereço deletado com sucesso!");
+		}else {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Err: Falha ao deletar o objeto.");
+		}
+		
 	}
 
 	@SecurityRequirement(name = "Bearer Auth")

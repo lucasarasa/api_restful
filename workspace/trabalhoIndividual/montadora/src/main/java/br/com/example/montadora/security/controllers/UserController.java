@@ -136,7 +136,7 @@ public class UserController {
 	}
 
 	@SecurityRequirement(name = "Bearer Auth")
-	@PreAuthorize("hasRole('USER')")
+	@PreAuthorize("hasAnyRole('USER','ADMIN')")
 	@DeleteMapping("/{id}")
 	@Operation(summary = "Deletar usuário.")
 	public ResponseEntity<String> deletarUsuario(@PathVariable Integer id) {
@@ -149,11 +149,11 @@ public class UserController {
 	}
 
 	@SecurityRequirement(name = "Bearer Auth")
-	@PreAuthorize("hasRole('USER')")
+	@PreAuthorize("hasAnyRole('USER','ADMIN')")
 	@PutMapping("/{id}")
 	@Operation(summary = "Atualizar usuário.")
 	public ResponseEntity<?> atualizarUsuario(@PathVariable Integer id, @RequestBody UserRequestDTO user) {
-		User userAtt = userServices.atualizarUsuario(id, user);
+		User userAtt = userServices.atualizarUsuario(id, user);	
 
 		if (userAtt != null) {	
 			return ResponseEntity.status(HttpStatus.OK).body("Usuário atualizado com sucesso!");

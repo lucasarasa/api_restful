@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -32,15 +33,15 @@ public class Concessionaria {
 	@Column(name = "con_tx_email")
 	private String email;
 
-	@OneToMany(mappedBy = "fkConcessionaria")
+	@OneToMany(mappedBy = "fkConcessionaria", cascade = CascadeType.ALL, orphanRemoval = true)
 	@Column(name = "con_fk_carro")
 	private List<Carro> fkCarro;
 
-	@OneToMany(mappedBy = "fkConcessionaria")
+	@OneToMany(mappedBy = "fkConcessionaria", cascade = CascadeType.ALL, orphanRemoval = true)
 	@JsonManagedReference
 	private List<User> fkuser;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(unique = true, name = "fk_endereco")
 	private Endereco fkEndereco;
 

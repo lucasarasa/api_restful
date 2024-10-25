@@ -114,7 +114,13 @@ public class EnderecoService {
 //		return enderecoResponseDTO;
 //	}
 	
-	public void deletarEndereco(Integer id) {
-		enderecoRepository.deleteById(id);
+	public boolean deletarEndereco(Integer id) {
+		if(enderecoRepository.existsById(id)) {
+			enderecoRepository.deleteById(id);			
+			return true;
+		} else {
+			return false;
+		}
 	}
+
 }
