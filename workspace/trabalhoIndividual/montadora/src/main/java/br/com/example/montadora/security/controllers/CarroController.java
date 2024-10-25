@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,6 +22,7 @@ import br.com.example.montadora.security.entities.Carro;
 import br.com.example.montadora.security.services.CarroServices;
 import br.com.example.montadora.utils.Util;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
 @RestController
 @RequestMapping("/carro")
@@ -32,12 +34,16 @@ public class CarroController {
 	@Autowired
 	CarroServices carroServices;
 
+	@SecurityRequirement(name = "Bearer Auth")
+	@PreAuthorize("hasRole('ADMIN')")
 	@GetMapping
 	@Operation(summary = "Obter a lista de todos os carros.")
 	public List<CarroResponseDTO> listarCarros() {
 		return carroServices.listarCarros();
 	}
 
+	@SecurityRequirement(name = "Bearer Auth")
+	@PreAuthorize("hasRole('ADMIN')")
 	@PostMapping
 	@Operation(summary = "Cadastrar carro.")
 	public ResponseEntity<?> cadastrarCarro(@RequestBody CarroRequestDTO carro) {
@@ -45,6 +51,8 @@ public class CarroController {
 		return ResponseEntity.ok(new MessageResponseDTO("Carro cadastrado com sucesso"));
 	}
 
+	@SecurityRequirement(name = "Bearer Auth")
+	@PreAuthorize("hasRole('ADMIN')")
 	@DeleteMapping("/{id}")
 	@Operation(summary = "Deletar carro.")
 	public ResponseEntity<String> deletarCarro(@PathVariable Integer id) {
@@ -56,12 +64,16 @@ public class CarroController {
 		}
 	}
 
+	@SecurityRequirement(name = "Bearer Auth")
+	@PreAuthorize("hasRole('ADMIN')")
 	@GetMapping("/{id}")
 	@Operation(summary = "Buscar carro por id.")
 	public CarroResponseDTO buscarPorId(@PathVariable Integer id) {
 		return carroServices.buscarPorId(id);
 	}
 
+	@SecurityRequirement(name = "Bearer Auth")
+	@PreAuthorize("hasRole('ADMIN')")
 	@PutMapping("/{id}")
 	@Operation(summary = "Atualizar carro.")
 	public ResponseEntity<?> atualizarCarro(@PathVariable Integer id, @RequestBody CarroRequestDTO carroRequestDTO) {

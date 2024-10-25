@@ -1,6 +1,5 @@
 package br.com.example.montadora.security.services;
 
-import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Properties;
@@ -13,6 +12,8 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Component;
 
+import br.com.example.montadora.security.dto.SignupRequestDTO;
+import br.com.example.montadora.security.dto.UserRequestDTO;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 
@@ -65,7 +66,7 @@ public class EmailService {
 		}
 	}
 	
-	public String writerTeste2() {
+	public String writerTeste2(SignupRequestDTO signUpRequest) {
 		LocalDateTime localDateTime = LocalDateTime.now();
 		DateTimeFormatter dateForm = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		
@@ -73,13 +74,19 @@ public class EmailService {
 		
 		try {
 			MimeMessageHelper helper = new MimeMessageHelper(message, true);
-			helper.setSubject("Compra Automóvel");
-			helper.setTo("emailcomprador@gmail.com");
+			helper.setSubject("Cadastro efetuado com sucesso!");
+			helper.setTo(signUpRequest.getEmail());
 			
-			String emailText = "<h1>Olá</h1>"
-								+"<p>paragrafo</p>"
-								+ "<p>Email enviado dia: " + localDateTime.format(dateForm) + "</p>"
-										+ "<br>";
+			String emailText = "<h1>Bem-vindo(a), " + signUpRequest.getUsername() + "!</h1>"
+	                 + "<p>É um grande prazer tê-lo(a) como cliente em nossa concessionária.</p>"
+	                 + "<p>Estamos prontos para oferecer o melhor atendimento e garantir que você tenha uma excelente experiência conosco.</p>"
+	                 + "<p>Se precisar de qualquer suporte, nossa equipe estará sempre à disposição para ajudar.</p>"
+	                 + "<p>Este e-mail foi enviado em: " + localDateTime.format(dateForm) + "</p>"
+	                 + "<br>"
+	                 + "<p>Atenciosamente,</p>"
+	                 + "<p><strong>Equipe Montadora Automóveis</strong></p>"
+	                 + "<p><i>Aguardamos sua visita em breve!</i></p>";
+			
 			helper.setText(emailText, true);
 			javaMailSender.send(message);
 			return "Email enviado com sucesso";
