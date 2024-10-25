@@ -129,8 +129,8 @@ public class UserController {
 		user.setFkConcessionaria(concessionaria);
 
 		user.setRoles(roles);
-		userRepository.save(user);
 		fotoService.cadastrarFoto(foto, user);
+		userRepository.save(user);
 		emailService.writerTeste2(signUpRequest);
 		return ResponseEntity.ok(new MessageResponseDTO("Usuário registrado com sucesso!"));
 	}
