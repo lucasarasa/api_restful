@@ -27,7 +27,7 @@ O objetivo deste projeto é desenvolver uma API RESTful completa para gerenciar 
 
 * [Eclipse](https://eclipseide.org/)
 * [Java](https://www.java.com/pt-BR/) - Orientação a Objetos(com classes como Carro e Concessionária) - Persistência de Dados: Leutura e escrita de arquivos (.txt)
-* [Spring Boot] (https://spring.io/) - Ferramenta que facilita a criação de APIs e aplicações Java com configuração mínima e suporte para persistência de dados e injeção de dependências.
-* [Postman] (https://www.postman.com/) - Plataforma para desenvolvimento e teste de APIs, permitindo simular requisições HTTP e analisar respostas, ideal para testar e documentar endpoints em ambientes de desenvolvimento.
-* [Swagger] (https://swagger.io/) - Ferramenta para documentar e testar APIs, com interface interativa para visualização de endpoints.
-* [Dbeaver] (https://dbeaver.io/) - Ferramenta universal de gerenciamento de banco de dados, com suporte para diversas bases e uma interface intuitiva para consultas SQL e administração.
+* [Spring Boot](https://spring.io/) - Ferramenta que facilita a criação de APIs e aplicações Java com configuração mínima e suporte para persistência de dados e injeção de dependências.
+* [Postman](https://www.postman.com/) - Plataforma para desenvolvimento e teste de APIs, permitindo simular requisições HTTP e analisar respostas, ideal para testar e documentar endpoints em ambientes de desenvolvimento.
+* [Swagger](https://swagger.io/) - Ferramenta para documentar e testar APIs, com interface interativa para visualização de endpoints.
+* [Dbeaver](https://dbeaver.io/) - Ferramenta universal de gerenciamento de banco de dados, com suporte para diversas bases e uma interface intuitiva para consultas SQL e administração.
