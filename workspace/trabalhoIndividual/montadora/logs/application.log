@@ -34,3 +34,39 @@
 2024-10-26T17:57:22.916-03:00  INFO 15180 --- [montadora] [RMI TCP Connection(2)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2024-10-26T17:57:22.919-03:00  INFO 15180 --- [montadora] [RMI TCP Connection(2)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2024-10-26T17:57:22.924-03:00  INFO 15180 --- [montadora] [RMI TCP Connection(2)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-10-26T19:42:38.799-03:00  INFO 9980 --- [montadora] [restartedMain] b.c.e.montadora.MontadoraApplication     : Starting MontadoraApplication using Java 17.0.11 with PID 9980 (C:\Users\lucas\OneDrive\Desktop\Residencia\api\workspace\trabalhoIndividual\montadora\target\classes started by Lucas in C:\Users\lucas\OneDrive\Desktop\Residencia\api\workspace\trabalhoIndividual\montadora)
+2024-10-26T19:42:38.802-03:00  INFO 9980 --- [montadora] [restartedMain] b.c.e.montadora.MontadoraApplication     : No active profile set, falling back to 1 default profile: "default"
+2024-10-26T19:42:38.858-03:00  INFO 9980 --- [montadora] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-10-26T19:42:38.858-03:00  INFO 9980 --- [montadora] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-10-26T19:42:40.002-03:00  INFO 9980 --- [montadora] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-10-26T19:42:40.101-03:00  INFO 9980 --- [montadora] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 89 ms. Found 6 JPA repository interfaces.
+2024-10-26T19:42:40.883-03:00  INFO 9980 --- [montadora] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8000 (http)
+2024-10-26T19:42:40.900-03:00  INFO 9980 --- [montadora] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-10-26T19:42:40.901-03:00  INFO 9980 --- [montadora] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-10-26T19:42:40.994-03:00  INFO 9980 --- [montadora] [restartedMain] o.a.c.c.C.[.[localhost].[/montadora]     : Initializing Spring embedded WebApplicationContext
+2024-10-26T19:42:40.994-03:00  INFO 9980 --- [montadora] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2135 ms
+2024-10-26T19:42:41.194-03:00  INFO 9980 --- [montadora] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-10-26T19:42:41.272-03:00  INFO 9980 --- [montadora] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-10-26T19:42:41.320-03:00  INFO 9980 --- [montadora] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-10-26T19:42:41.727-03:00  INFO 9980 --- [montadora] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-10-26T19:42:41.772-03:00  INFO 9980 --- [montadora] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-10-26T19:42:41.970-03:00  INFO 9980 --- [montadora] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@4232c4e2
+2024-10-26T19:42:41.972-03:00  INFO 9980 --- [montadora] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-10-26T19:42:43.377-03:00  INFO 9980 --- [montadora] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-10-26T19:42:43.561-03:00  INFO 9980 --- [montadora] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-10-26T19:42:44.080-03:00 TRACE 9980 --- [montadora] [restartedMain] eGlobalAuthenticationAutowiredConfigurer : Eagerly initializing {webSecurityConfig=br.com.example.montadora.security.WebSecurityConfig$$SpringCGLIB$$0@1c4afc96}
+2024-10-26T19:42:44.105-03:00  INFO 9980 --- [montadora] [restartedMain] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-10-26T19:42:44.106-03:00  WARN 9980 --- [montadora] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-10-26T19:42:44.153-03:00  INFO 9980 --- [montadora] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-10-26T19:42:44.654-03:00 DEBUG 9980 --- [montadora] [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 26 mappings in 'requestMappingHandlerMapping'
+2024-10-26T19:42:44.791-03:00 DEBUG 9980 --- [montadora] [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**, /swagger-ui*/*swagger-initializer.js, /swagger-ui*/**] in 'resourceHandlerMapping'
+2024-10-26T19:42:44.867-03:00 DEBUG 9980 --- [montadora] [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, LogoutFilter, AuthTokenFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2024-10-26T19:42:44.991-03:00 DEBUG 9980 --- [montadora] [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-10-26T19:42:45.035-03:00 DEBUG 9980 --- [montadora] [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-10-26T19:42:45.293-03:00  INFO 9980 --- [montadora] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-10-26T19:42:45.342-03:00  INFO 9980 --- [montadora] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8000 (http) with context path '/montadora'
+2024-10-26T19:42:45.357-03:00  INFO 9980 --- [montadora] [restartedMain] b.c.e.montadora.MontadoraApplication     : Started MontadoraApplication in 7.018 seconds (process running for 7.855)
+2024-10-26T19:42:56.921-03:00  INFO 9980 --- [montadora] [RMI TCP Connection(2)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2024-10-26T19:42:56.986-03:00  INFO 9980 --- [montadora] [RMI TCP Connection(2)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-10-26T19:42:56.995-03:00  INFO 9980 --- [montadora] [RMI TCP Connection(2)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-10-26T19:42:56.998-03:00  INFO 9980 --- [montadora] [RMI TCP Connection(2)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
