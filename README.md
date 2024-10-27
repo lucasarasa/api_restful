@@ -31,3 +31,4 @@ O objetivo deste projeto é desenvolver uma API RESTful completa para gerenciar 
 * [Postman](https://www.postman.com/) - Plataforma para desenvolvimento e teste de APIs, permitindo simular requisições HTTP e analisar respostas, ideal para testar e documentar endpoints em ambientes de desenvolvimento.
 * [Swagger](https://swagger.io/) - Ferramenta para documentar e testar APIs, com interface interativa para visualização de endpoints.
 * [Dbeaver](https://dbeaver.io/) - Ferramenta universal de gerenciamento de banco de dados, com suporte para diversas bases e uma interface intuitiva para consultas SQL e administração.
+![ft_banco](https://github.com/user-attachments/assets/3632d091-f453-4889-b584-d6d152951239)
